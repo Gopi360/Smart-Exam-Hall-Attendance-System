@@ -27,7 +27,7 @@ while True:
     ret, frame = cap.read()
     if not ret:
         break
-    
+    frame = cv2.flip(frame,1)
     rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
     faces = detector.detect_faces(rgb_frame)
 
