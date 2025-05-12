@@ -18,6 +18,7 @@ for filename in os.listdir(test_dir):
         rgb_img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
         faces = detector.detect_faces(rgb_img)
+        
         if faces:
             x, y, w, h = faces[0]['box']
             face = rgb_img[y:y+h, x:x+w]
