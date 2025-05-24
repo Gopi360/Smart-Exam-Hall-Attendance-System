@@ -1,33 +1,31 @@
-import cv2
-import numpy as np
 import os
-from mtcnn import MTCNN
-from keras_facenet import FaceNet
+import torch
+import numpy as np
+from PIL import Image
+from facenet_pytorch import InceptionResnetV1, MTCNN
 
-detector = MTCNN()
-embedder = FaceNet()
+# Initialize models
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+mtcnn = MTCNN(image_size=160, margin=0, device=device)
+model = InceptionResnetV1(pretrained='vggface2').eval().to(device)
 
-test_dir = "E:\MCA_MAJOR_PROJECT\Smart-Exam-Hall-Attendance-System\Test"
-
+# Directory for test images
+test_dir = "E:/MCA_MAJOR_PROJECT/Smart-Exam-Hall-Attendance-System/Pictures"
 test_embeddings = {}
 
 for filename in os.listdir(test_dir):
-    if filename.lower().endswith(('.png','.jpg', '.jpeg')):
+    if filename.lower().endswith(('.jpg', '.jpeg', '.png')):
         img_path = os.path.join(test_dir, filename)
-        img = cv2.imread(img_path)
-        rgb_img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-
-        faces = detector.detect_faces(rgb_img)
+        img = Image.open(img_path).convert('RGB')
         
-        if faces:
-            x, y, w, h = faces[0]['box']
-            face = rgb_img[y:y+h, x:x+w]
-            face = cv2.resize(face, (160, 160))
-            face = np.expand_dims(face, axis=0)
-            embedding = embedder.embeddings(face)[0]
-
+        face = mtcnn(img)
+        if face is not None:
+            face = face.unsqueeze(0).to(device)
+            embedding = model(face).detach().cpu().numpy()[0]
             test_embeddings[filename] = embedding
             print(f"✅ Processed: {filename}")
+        else:
+            print(f"⚠ Face not detected in: {filename}")
 
 np.save("test_embeddings.npy", test_embeddings)
-print("✅ All embeddings saved!")
+print("✅ All embeddings saved!")

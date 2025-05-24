@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Registration</title>
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> -->
+</head>
+<style>
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        margin: 0;
+        padding: 0;
+        transition: background 0.3s, color 0.3s;
+    }
+
+    .light-mode {
+        background: #f0f0f0;
+        color: #222;
+    }
+
+    .dark-mode {
+        background: #121212;
+        color: #f5f5f5;
+    }
+
+    .form-container {
+        max-width: 500px;
+        margin: 5% auto;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        background-color: inherit;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    label {
+        margin-top: 15px;
+        font-weight: 600;
+    }
+
+    input[type="text"],
+    input[type="file"] {
+        margin-top: 5px;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #aaa;
+        background-color: inherit;
+        color: inherit;
+    }
+
+    button[type="submit"] {
+        margin-top: 20px;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #4CAF50;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #45a049;
+    }
+
+    .toggle-container {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+
+    #toggle-theme {
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    .message {
+        margin: 15px 0;
+        padding: 10px;
+        border-radius: 5px;
+        text-align: center;
+        font-weight: bold;
+        background-color: rgba(0, 128, 0, 0.2); /* green tint */
+        color: #0f0;
+    }
+</style>
+<body class="light-mode">
+    <div class="toggle-container">
+        <button id="toggle-theme">🌙</button>
+    </div>
+
+    <div class="form-container">
+        <h2>Student Registration</h2>
+
+        {% if message %}
+            <div class="message">{{ message }}</div>
+        {% endif %}
+
+
+        <form method="POST" enctype="multipart/form-data">
+            <label>Roll Number</label>
+            <input type="text" name="roll" required>
+
+            <label>Full Name</label>
+            <input type="text" name="name" required>
+
+            <label>Stream</label>
+            <input type="text" name="stream" required>
+
+            <label>Upload Passport Size Photo</label>
+            <input type="file" name="photo" accept=".jpg,.jpeg,.png" required>
+
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('toggle-theme').addEventListener('click', function () {
+        const body = document.body;
+        const isLight = body.classList.contains('light-mode');
+        body.classList.toggle('light-mode', !isLight);
+        body.classList.toggle('dark-mode', isLight);
+        this.textContent = isLight ? '☀️' : '🌙';
+    });
+
+    </script>
+</body>
+</html>
