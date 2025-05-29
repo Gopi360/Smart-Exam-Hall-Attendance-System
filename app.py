@@ -3,14 +3,12 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 import mysql.connector
 from werkzeug.utils import secure_filename
 
-# 🔧 Configuration
 UPLOAD_FOLDER = "E:/MCA_MAJOR_PROJECT/Smart-Exam-Hall-Attendance-System/Pictures"
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-# ✅ DB Connection
 db = mysql.connector.connect(
     host="localhost",
     user="root",
@@ -19,7 +17,6 @@ db = mysql.connector.connect(
 )
 cursor = db.cursor()
 
-# ✅ Allowed file check
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
