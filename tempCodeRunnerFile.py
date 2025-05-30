@@ -52,7 +52,6 @@ def register():
         else:
             message = "❌ Invalid file type!"
 
-    # Show success message only if redirected after successful insert
     if request.args.get('success'):
         message = "✅ Registered successfully!"
 

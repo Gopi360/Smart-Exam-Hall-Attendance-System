@@ -2,134 +2,200 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Student Registration</title>
-    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
 </head>
+<!-- <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script> -->
 <style>
-    body {
-        font-family: 'Segoe UI', sans-serif;
-        margin: 0;
-        padding: 0;
-        transition: background 0.3s, color 0.3s;
-    }
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
 
-    .light-mode {
-        background: #f0f0f0;
-        color: #222;
-    }
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
 
-    .dark-mode {
-        background: #121212;
-        color: #f5f5f5;
-    }
+section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    /* background: url('Pic.jpg') no-repeat; */
+    background: url("{{ url_for('static', filename='Pic.jpg') }}") no-repeat;
+    background-size: cover;
+    background-position: center;
+    /* animation: animateBg 5s linear infinite; */
+}
 
-    .form-container {
-        max-width: 500px;
-        margin: 5% auto;
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 0 15px rgba(0,0,0,0.2);
-        background-color: inherit;
-        border: 1px solid rgba(255, 255, 255, 0.1);
+/* @keyframes animateBg {
+    100%{
+        filter: hue-rotate(360deg);
     }
+} */
 
-    form {
-        display: flex;
-        flex-direction: column;
-    }
+.login-box{
+    position: relative;
+    width: 500px;
+    height: 600px;
+    background: transparent;
+    /* border: 1px solid rgba(255, 255, 255, .5); */
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(100px);
+}
 
-    label {
-        margin-top: 15px;
-        font-weight: 600;
-    }
+h2{
+    font-size: 2em;
+    color: white;
+    text-align: center;
+}
 
-    input[type="text"],
-    input[type="file"] {
-        margin-top: 5px;
-        padding: 10px;
-        border-radius: 5px;
-        border: 1px solid #aaa;
-        background-color: inherit;
-        color: inherit;
-    }
+.input-box{
+    position: relative;
+    width: 310px;
+    margin: 30px 0;
+    border-bottom: 2px solid #fff;
+}
 
-    button[type="submit"] {
-        margin-top: 20px;
-        padding: 10px;
+.input-box label{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color: white;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.input-box input{
+    width: 100%;
+    height: 50px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    color: white;
+    padding: 0 35px 0 5px;
+}
+
+.input-box .icon{
+    position: absolute;
+    color: white;
+    right: 8px;
+    font-size: 1.2em;
+    line-height: 57px;
+}
+
+.input-box input:focus ~ label,
+.input-box input:valid ~ label{
+    top: -5px;
+}
+
+.remember-forgot{
+    margin: -15px 0 15px;
+    font-size: .9em;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+}
+
+.remember-forgot label input{
+    margin-right: 3px;
+}
+
+.remember-forgot a{
+    color: #fff;
+    text-decoration: none;
+}
+
+.remember-forgot a:hover{
+    text-decoration: underline;
+}
+
+button{
+    width: 100%;
+    height: 40px;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 1em;
+    color: black;
+    font-weight: 500;
+    transition: 0.5s;
+    box-shadow: 0px 0px 5px #fff;
+}
+button:hover{
+    box-shadow: 0px 0px 15px #fff;
+    
+}
+
+.register-link{
+    font-size: .9em;
+    color: white;
+    text-align: center;
+    margin: 25px 0 10px;
+}
+
+.register-link p a{
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.register-link p a:hover{
+    text-decoration: underline;
+}
+
+@media (max-width: 360px){
+    .login-box{
+        width: 100%;
+        height: 150vh;
         border: none;
-        border-radius: 5px;
-        background-color: #4CAF50;
-        color: white;
-        font-weight: bold;
-        cursor: pointer;
+        border-radius: 0;
     }
-
-    button[type="submit"]:hover {
-        background-color: #45a049;
+    .input-box{
+        width: 290px;
     }
-
-    .toggle-container {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-    }
-
-    #toggle-theme {
-        background: none;
-        border: none;
-        font-size: 24px;
-        cursor: pointer;
-    }
-
-    .message {
-        margin: 15px 0;
-        padding: 10px;
-        border-radius: 5px;
-        text-align: center;
-        font-weight: bold;
-        background-color: rgba(0, 128, 0, 0.2); /* green tint */
-        color: #0f0;
-    }
+}
 </style>
-<body class="light-mode">
-    <div class="toggle-container">
-        <button id="toggle-theme">🌙</button>
-    </div>
-
-    <div class="form-container">
-        <h2>Student Registration</h2>
-
-        {% if message %}
-            <div class="message">{{ message }}</div>
-        {% endif %}
-
-
+<body>
+<section>
+    <div class="login-box">
         <form method="POST" enctype="multipart/form-data">
-            <label>Roll Number</label>
-            <input type="text" name="roll" required>
-
-            <label>Full Name</label>
-            <input type="text" name="name" required>
-
-            <label>Stream</label>
-            <input type="text" name="stream" required>
-
-            <label>Upload Passport Size Photo</label>
-            <input type="file" name="photo" accept=".jpg,.jpeg,.png" required>
-
+            <h2>Student Registration</h2>
+            <div class="input-box">
+                <input type="text" name="roll" required>
+                <label for="roll">Roll No</label>
+            </div>
+            <div class="input-box">
+                <input type="text" name="name" required>
+                <label for="name">Full Name</label>
+            </div>
+            <div class="input-box">
+                <input type="text" name="stream" required>
+                <label for="stream">Exam Name</label>
+            </div>
+            <div class="input-box">
+                <input type="file" name="photo" accept=".jpg,.jpeg,.png" required>
+                
+            </div>
             <button type="submit">Register</button>
         </form>
     </div>
-
-    <script>
-        document.getElementById('toggle-theme').addEventListener('click', function () {
-        const body = document.body;
-        const isLight = body.classList.contains('light-mode');
-        body.classList.toggle('light-mode', !isLight);
-        body.classList.toggle('dark-mode', isLight);
-        this.textContent = isLight ? '☀️' : '🌙';
-    });
-
-    </script>
+</section>
 </body>
+{% if message %}
+<script>
+    alert("{{ message }}");
+</script>
+{% endif %}
+
 </html>

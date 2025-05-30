@@ -9,15 +9,12 @@ from facenet_pytorch import InceptionResnetV1, MTCNN
 from scipy.spatial.distance import cosine
 import mysql.connector
 
-# Device config
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 mtcnn = MTCNN(image_size=160, margin=0, device=device)
 model = InceptionResnetV1(pretrained='vggface2').eval().to(device)
 
-# Load known embeddings
 test_embeddings = np.load("test_embeddings.npy", allow_pickle=True).item()
 
-# MySQL connection setup
 conn = mysql.connector.connect(
     host="localhost",
     user="root",
@@ -56,11 +53,9 @@ def recognize_face(face_embedding, threshold=0.5):
             best_score = score
     return best_match, best_score
 
-# Track who has already been marked
 already_marked = set()
 last_print_time = {}
 
-# Start webcam
 cap = cv2.VideoCapture(0)
 print(" Starting camera. Press 'q' to quit.")
 
