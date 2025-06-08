@@ -2,7 +2,6 @@ import tkinter as tk
 from tkinter import messagebox
 from gui.main_window import open_main_window
 
-
 def open_login_window(root):
     login_window = tk.Toplevel(root)
     login_window.title("Admin Login")

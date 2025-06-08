@@ -3,7 +3,6 @@ from tkinter import messagebox, simpledialog
 import os
 from app.database import export_students_to_excel, export_attendance_to_excel, delete_attendance_data, delete_students_data
 
-
 def open_main_window():
     window = tk.Toplevel()
     window.title("Admin Dashboard")
