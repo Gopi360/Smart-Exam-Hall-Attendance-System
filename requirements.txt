@@ -1,0 +1,11 @@
+torch
+facenet-pytorch
+numpy
+opencv-python
+Pillow
+scipy
+mysql-connector-python
+pandas
+openpyxl
+tk
+Flask
