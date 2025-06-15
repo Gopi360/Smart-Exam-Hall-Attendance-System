@@ -25,11 +25,3 @@ def open_login_window(root):
             messagebox.showerror("Login Failed", "Invalid credentials.")
 
     tk.Button(login_window, text="Login", command=validate_login).pack(pady=10)
-
-
-# Optional test entry point
-# if __name__ == '__main__':
-#     root = tk.Tk()
-#     root.withdraw()
-#     open_login_window(root)
-#     root.mainloop()
