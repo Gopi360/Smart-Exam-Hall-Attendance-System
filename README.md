@@ -59,7 +59,7 @@ Smart-Exam-Hall-Attendance-System/
 ## 📸 Screenshots
 
 ### 🔹 Registration Form
-![Registration Form](screenshot/registration_form.png)
+![Registration Form](screenshot/registration_form.jpg)
 
 ### 🔹 Real-time Attendance
 ![Face Recognition](screenshot/face_recognition1.png)
