@@ -38,7 +38,7 @@ A real-time face recognition-based attendance system designed to automate studen
 | Database              | MySQL (via mysql-connector-python)           |
 | Development Tools     | VS Code, StarUML (for design), PyInstaller   |
 
----
+<!-- ---
 
 ## 📂 Folder Structure Overview
 
@@ -51,12 +51,12 @@ Smart-Exam-Hall-Attendance-System/
 ├── test_embeddings.npy
 ├── main.py # Launches GUI + recognition system
 ├── app.py # Flask app for registration
-└── README.md
+└── README.md -->
 
 
 ---
 
-## 📸 Screenshots
+<!-- ## 📸 Screenshots
 
 ### 🔹 Registration Form
 ![Registration Form](screenshot/registration_form.png)
@@ -73,7 +73,7 @@ Smart-Exam-Hall-Attendance-System/
 ![Admin Panel](screenshot/admin_panel_1.png)
 ![Admin Panel](screenshot/admin_panel_2.png)
 
----
+--- -->
 
 ## 📈 Future Scope
 
