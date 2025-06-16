@@ -37,7 +37,7 @@ def recognize_and_mark_attendance(embedding_path="test_embeddings.npy"):
             match_name, score = None, 1.0
             for filename, ref_embedding in test_embeddings.items():
                 dist = cosine(embedding, ref_embedding)
-                if dist < score and dist < 0.5:
+                if dist < score and dist < 0.5:  # Threshold for matching
                     match_name = filename
                     score = dist
 
