@@ -59,19 +59,19 @@ Smart-Exam-Hall-Attendance-System/
 ## 📸 Screenshots
 
 ### 🔹 Registration Form
-![Registration Form](Screenshot/registration_form.png)
+![Registration Form](Screenshot/Registration_form.png)
 
 ### 🔹 Real-time Attendance
-![Face Recognition](screenshot/face_recognition1.png)
-![Face Recognition](screenshot/face_recognition2.png)
-![Face Recognition](screenshot/face_recognition3.png)
-![Face Recognition](screenshot/face_recognition4.png)
-![Face Recognition](screenshot/face_recognition5.png)
-![Face Recognition](screenshot/face_recognition6.png)
+![Face Recognition](Screenshot/Face_recognition1.png)
+![Face Recognition](Screenshot/Face_recognition2.png)
+![Face Recognition](Screenshot/Face_recognition3.png)
+![Face Recognition](Screenshot/Face_recognition4.png)
+![Face Recognition](Screenshot/Face_recognition5.png)
+![Face Recognition](Screenshot/Face_recognition6.png)
 
 ### 🔹 Admin Panel
-![Admin Panel](Screenshot/admin_panel_1.png)
-![Admin Panel](Screenshot/admin_panel_2.png)
+![Admin Panel](Screenshot/Admin_panel_1.png)
+![Admin Panel](Screenshot/Admin_panel_2.png)
 
 ---
 
