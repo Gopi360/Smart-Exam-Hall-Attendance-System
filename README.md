@@ -272,13 +272,13 @@ python gui/admin_dashboard.py
 ## Screenshots
 
 ### 1. Student Registration Portal
-![Registration Page](screenshot/registration_form.png)
+![Registration Page](screenshot/registration_Form.png)
 
 ### 2. Real-Time Face Detection
-![Face Detection](screenshot/face_recognition5.png)
+![Face Detection](screenshot/face_Recognition5.png)
 
 ### 3. Admin Dashboard
-![Admin Dashboard](screenshot/admin_panel_2.png)
+![Admin Dashboard](screenshot/admin_Panel_2.png)
 
 ### 4. Attendance Report
 ![Attendance Report](screenshot/attendance_report.png)
